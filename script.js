@@ -1,46 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Image Slider</title>
+let images = [
+  "img1.jpg.png",
+  "img2.jpg.png",
+  "img3.jpg.png"
+];
 
-    <script>
-        var images = [
-            "img1.jpg.png",
-            "img2.jpg.png",
-            "img3.jpg.png",
-        ];
+let index = 0;
 
-        var index = 0;
+function showImage() {
+    document.getElementById("slider-img").src = images[index];
+}
 
-        function nextImage() {
-            index++;
-            if (index >= images.length) {
-                index = 0;
-            }
-            document.getElementById("pic").src = images[index];
-        }
+function nextImage() {
+    index = (index + 1) % images.length;
+    showImage();
+}
 
-        function prevImage() {
-            index--;
-            if (index < 0) {
-                index = images.length - 1;
-            }
-            document.getElementById("pic").src = images[index];
-        }
-    </script>
-</head>
-
-<body>
-
-    <h2>Image Slider</h2>
-
-    <img id="pic" src="img1.jpg.png" width="300" height="200">
-    
-
-    <br><br>
-
-    <button onclick="prevImage()">Previous Image</button>
-    <button onclick="nextImage()">Next Image</button>
-
-</body>
-</html>
+function prevImage() {
+    index = (index - 1 + images.length) % images.length;
+    showImage();
+}
