@@ -1,4 +1,5 @@
-let images = [
+<script>
+  let images = [
   "img1.jpg.png",
   "img2.jpg.png",
   "img3.jpg.png"
@@ -19,3 +20,5 @@ function prevImage() {
     index = (index - 1 + images.length) % images.length;
     showImage();
 }
+</script>
+
