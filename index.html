@@ -12,9 +12,23 @@
         <p>This is a simple static website created using HTML and CSS.</p>
     </header>
 
+    <!-- IMAGE SLIDER START -->
+    <div class="slider">
+        <button class="btn left" onclick="prevImage()">❮</button>
+
+        <!-- IMPORTANT: filename exactly same as repo -->
+        <img id="slider-img" src="img1.jpg.png" alt="Image Slider">
+
+        <button class="btn right" onclick="nextImage()">❯</button>
+    </div>
+    <!-- IMAGE SLIDER END -->
+
     <section>
         <h2>About Me</h2>
-        <p>My name is Ashish Singh. Student of AiMl at Niet Greater Noida.<br> This website is created as part of Web Designing practical.</p>
+        <p>
+            My name is Ashish Singh. Student of AiMl at Niet Greater Noida.<br>
+            This website is created as part of Web Designing practical.
+        </p>
     </section>
 
     <section>
@@ -26,6 +40,9 @@
     <footer>
         <p>© 2026 My Static Website</p>
     </footer>
+
+    <!-- JS FILE (MUST be at end) -->
+    <script src="script.js"></script>
 
 </body>
 </html>
