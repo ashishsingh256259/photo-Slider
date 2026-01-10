@@ -27,11 +27,12 @@ header {
     margin: 40px auto;
     position: relative;
 }
-
 .slider img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    height: auto;              /* 🔥 CUT STOP */
+    max-height: 400px;
+    object-fit: contain;       /* 🔥 FULL IMAGE */
+    background-color: #000;    /* black bars (optional but clean) */
     border-radius: 10px;
 }
 
