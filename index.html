@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ashish Singh — Full-Stack Developer & AIML Student</title>
+<title>Ashish Singh — Full-Stack Developer & AI/ML Student</title>
+<meta name="description" content="Ashish Singh — CSE (AI/ML) student at NIET Greater Noida and self-taught full-stack developer building AI-powered platforms across urban safety, disaster response, career tech, and hospitality management." />
+<meta name="author" content="Ashish Singh" />
+<link rel="canonical" href="https://self-intro-beryl.vercel.app/" />
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Ashish Singh — Full-Stack Developer & AI/ML Student" />
+<meta property="og:description" content="CSE (AI/ML) student and self-taught full-stack developer building AI-powered, real-world platforms — from smart-city and disaster-response systems to career tech and hospitality management." />
+<meta property="og:url" content="https://self-intro-beryl.vercel.app/" />
+<meta property="og:site_name" content="Ashish Singh — Portfolio" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Ashish Singh — Full-Stack Developer & AI/ML Student" />
+<meta name="twitter:description" content="CSE (AI/ML) student and self-taught full-stack developer building AI-powered, real-world platforms." />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23080a0f'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%23f5e642' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -40,7 +58,29 @@
     overflow-x: hidden;
   }
 
+  img { max-width: 100%; display: block; }
+
   ::selection { background: rgba(245,230,66,0.25); color: var(--yellow); }
+
+  /* ACCESSIBILITY */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px;
+  }
+  .skip-link {
+    position: absolute; left: -9999px; top: 0; z-index: 200;
+    background: var(--yellow); color: #080a0f; padding: 10px 18px;
+    font-family: var(--font-mono); font-weight: 600; border-radius: 0 0 8px 0;
+  }
+  .skip-link:focus { left: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 
   /* SCROLLBAR */
   ::-webkit-scrollbar { width: 4px; }
@@ -57,6 +97,7 @@
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     animation: slideDown 0.6s ease;
+    gap: 16px;
   }
   @keyframes slideDown { from { transform: translateY(-100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -66,26 +107,39 @@
     color: var(--text);
     letter-spacing: -0.02em;
     text-decoration: none;
+    flex-shrink: 0;
   }
   .nav-logo span { color: var(--yellow); }
 
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links { display: flex; gap: 24px; list-style: none; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
-    color: var(--muted2); font-size: 0.875rem; text-decoration: none;
+    color: var(--muted2); font-size: 0.82rem; text-decoration: none;
     font-family: var(--font-mono); font-weight: 400;
     transition: color 0.2s;
     letter-spacing: 0.02em;
+    white-space: nowrap;
   }
   .nav-links a:hover { color: var(--yellow); }
 
+  .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+
   .nav-cta {
     background: var(--yellow); color: #080a0f;
-    padding: 8px 18px; border-radius: 6px;
-    font-size: 0.8rem; font-weight: 700; font-family: var(--font-display);
+    padding: 8px 16px; border-radius: 6px;
+    font-size: 0.78rem; font-weight: 700; font-family: var(--font-display);
     text-decoration: none; letter-spacing: 0.03em;
-    transition: all 0.2s;
+    transition: all 0.2s; white-space: nowrap;
   }
   .nav-cta:hover { background: #fff; transform: translateY(-1px); }
+
+  .nav-cta-ghost {
+    background: transparent; color: var(--text);
+    padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border2);
+    font-size: 0.78rem; font-weight: 500; font-family: var(--font-mono);
+    text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  }
+  .nav-cta-ghost:hover { border-color: var(--cyan); color: var(--cyan); }
 
   /* HERO */
   .hero {
@@ -136,9 +190,10 @@
     pointer-events: none;
   }
   .float-el .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; }
-  .float-el1 { top: 20%; left: 8%; animation-delay: 0s; }
-  .float-el2 { top: 30%; right: 10%; animation-delay: -2s; }
-  .float-el3 { bottom: 25%; left: 12%; animation-delay: -4s; }
+  .float-el1 { top: 18%; left: 6%; animation-delay: 0s; }
+  .float-el2 { top: 26%; right: 6%; animation-delay: -2s; }
+  .float-el3 { bottom: 28%; left: 9%; animation-delay: -4s; }
+  .float-el4 { bottom: 18%; right: 10%; animation-delay: -3s; }
   @keyframes floatEl {
     from { transform: translateY(0px); opacity: 0.7; }
     to { transform: translateY(-12px); opacity: 1; }
@@ -187,13 +242,13 @@
   }
 
   .hero-desc {
-    font-size: 1rem; color: var(--muted2); max-width: 580px;
+    font-size: 1rem; color: var(--muted2); max-width: 600px;
     margin: 0 auto 44px; line-height: 1.75; font-weight: 300;
   }
 
   .hero-btns {
     display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 
   .btn-primary {
@@ -202,8 +257,20 @@
     font-family: var(--font-display); font-weight: 700; font-size: 0.875rem;
     text-decoration: none; letter-spacing: 0.02em;
     transition: all 0.2s; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
   }
   .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,230,66,0.3); }
+
+  .btn-resume {
+    background: transparent; color: var(--cyan);
+    padding: 12px 28px; border-radius: 8px;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.875rem;
+    text-decoration: none; letter-spacing: 0.02em;
+    border: 1px solid var(--cyan);
+    transition: all 0.2s; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-resume:hover { background: rgba(0,229,255,0.1); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,229,255,0.15); }
 
   .btn-ghost {
     background: var(--surface2); color: var(--text);
@@ -215,7 +282,7 @@
   .btn-ghost:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); transform: translateY(-1px); }
 
   .hero-social {
-    display: flex; gap: 8px; justify-content: center;
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
   }
   .social-pill {
     display: flex; align-items: center; gap: 6px;
@@ -229,7 +296,7 @@
 
   /* SECTIONS */
   section { padding: 100px 40px; }
-  .container { max-width: 1100px; margin: 0 auto; }
+  .container { max-width: 1140px; margin: 0 auto; }
 
   .section-label {
     font-family: var(--font-mono); font-size: 0.72rem;
@@ -246,7 +313,7 @@
   }
 
   .section-desc {
-    color: var(--muted2); max-width: 520px;
+    color: var(--muted2); max-width: 560px;
     font-size: 0.95rem; font-weight: 300; line-height: 1.75;
   }
 
@@ -289,10 +356,25 @@
   .stat-label { font-size: 0.8rem; color: var(--muted); font-family: var(--font-mono); }
 
   /* PROJECTS */
+  .projects-subhead {
+    display: flex; align-items: center; gap: 14px; margin: 64px 0 28px;
+  }
+  .projects-subhead:first-of-type { margin-top: 60px; }
+  .projects-subhead h3 {
+    font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+    letter-spacing: -0.01em; color: var(--text); white-space: nowrap;
+  }
+  .projects-subhead .line { flex: 1; height: 1px; background: var(--border); }
+  .projects-subhead .tag {
+    font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted);
+    border: 1px solid var(--border); padding: 3px 10px; border-radius: 100px;
+  }
+
   .projects-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 24px; margin-top: 60px;
+    gap: 24px;
   }
+  .projects-grid.featured { grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); }
 
   .project-card {
     background: var(--surface);
@@ -307,6 +389,8 @@
     transform: translateY(-4px);
     box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(245,230,66,0.04);
   }
+  .project-card.featured { padding: 32px; border-color: var(--border2); }
+  .project-card.featured:hover { border-color: rgba(0,229,255,0.35); }
 
   /* Gradient top border */
   .project-card::before {
@@ -324,16 +408,23 @@
   }
   .project-card:hover::after { opacity: 1; }
 
-  .project-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 12px; }
+  .project-header-left { display: flex; align-items: center; gap: 12px; }
+
+  .project-number {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    letter-spacing: 0.05em;
+  }
 
   .project-icon {
     width: 44px; height: 44px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
     font-size: 1.3rem;
     background: rgba(245,230,66,0.1); border: 1px solid rgba(245,230,66,0.2);
+    flex-shrink: 0;
   }
 
-  .project-links { display: flex; gap: 8px; }
+  .project-links { display: flex; gap: 8px; flex-shrink: 0; }
   .project-link {
     display: flex; align-items: center; justify-content: center;
     width: 32px; height: 32px; border-radius: 7px;
@@ -345,14 +436,21 @@
   .project-link svg { width: 15px; height: 15px; }
 
   .project-name {
-    font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+    font-family: var(--font-display); font-size: 1.15rem; font-weight: 700;
     letter-spacing: -0.02em; margin-bottom: 4px; color: var(--text);
   }
-  .project-subtitle { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan); margin-bottom: 12px; opacity: 0.8; }
+  .project-card.featured .project-name { font-size: 1.3rem; }
+  .project-subtitle { font-family: var(--font-mono); font-size: 0.7rem; color: var(--cyan); margin-bottom: 4px; opacity: 0.85; }
+  .project-category { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); margin-bottom: 14px; letter-spacing: 0.03em; }
 
   .project-desc {
     font-size: 0.875rem; color: var(--muted2); line-height: 1.7;
     margin-bottom: 20px; font-weight: 300;
+  }
+
+  .project-note {
+    font-size: 0.78rem; color: var(--muted); line-height: 1.6;
+    margin: -12px 0 20px; font-style: italic; font-weight: 300;
   }
 
   .project-features {
@@ -368,12 +466,39 @@
   .project-stack {
     display: flex; flex-wrap: wrap; gap: 6px;
     padding-top: 16px; border-top: 1px solid var(--border);
+    margin-bottom: 18px;
   }
   .stack-tag {
     font-family: var(--font-mono); font-size: 0.65rem;
     padding: 4px 10px; border-radius: 100px;
     background: var(--surface2); border: 1px solid var(--border);
     color: var(--muted);
+  }
+
+  .project-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .project-btn {
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+    padding: 8px 16px; border-radius: 7px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s;
+  }
+  .project-btn.live { background: rgba(245,230,66,0.1); border: 1px solid rgba(245,230,66,0.25); color: var(--yellow); }
+  .project-btn.live:hover { background: rgba(245,230,66,0.18); }
+  .project-btn.code { background: var(--surface2); border: 1px solid var(--border); color: var(--muted2); }
+  .project-btn.code:hover { border-color: var(--border2); color: var(--text); }
+
+  /* NOW EXPLORING */
+  .exploring-strip {
+    margin-top: 60px; display: flex; flex-wrap: wrap; gap: 12px;
+    align-items: center;
+  }
+  .exploring-strip .exp-label {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted);
+    margin-right: 6px;
+  }
+  .exp-pill {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 7px 16px; border-radius: 100px;
   }
 
   /* SKILLS */
@@ -424,10 +549,10 @@
     border-radius: 50%;
     background: var(--bg2); border: 2px solid var(--yellow);
     display: flex; align-items: center; justify-content: center;
-    font-family: var(--font-mono); font-size: 0.65rem; color: var(--yellow);
-    font-weight: 600; letter-spacing: 0.02em; text-align: center; line-height: 1.2;
+    font-family: var(--font-mono); font-size: 0.62rem; color: var(--yellow);
+    font-weight: 600; letter-spacing: 0.01em; text-align: center; line-height: 1.15;
     box-shadow: 0 0 20px rgba(245,230,66,0.15);
-    flex-shrink: 0;
+    flex-shrink: 0; padding: 4px;
   }
 
   .timeline-content {
@@ -479,6 +604,46 @@
   }
   .strength-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; font-weight: 300; }
 
+  /* CERTIFICATIONS */
+  .cert-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px; margin-top: 60px;
+  }
+  .cert-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px; transition: all 0.3s;
+  }
+  .cert-card:hover { border-color: rgba(245,230,66,0.25); transform: translateY(-2px); }
+  .cert-icon { font-size: 1.4rem; margin-bottom: 12px; }
+  .cert-title { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .cert-issuer { font-family: var(--font-mono); font-size: 0.75rem; color: var(--cyan); margin-bottom: 8px; }
+  .cert-duration { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; font-family: var(--font-mono); }
+  .cert-type {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.65rem;
+    padding: 3px 10px; border-radius: 4px; background: rgba(245,230,66,0.1);
+    color: var(--yellow); border: 1px solid rgba(245,230,66,0.2);
+  }
+
+  /* ACHIEVEMENTS / HACKATHONS */
+  .achievement-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px; margin-top: 60px;
+  }
+  .achievement-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px; transition: all 0.3s;
+  }
+  .achievement-card:hover { border-color: rgba(0,229,255,0.25); transform: translateY(-2px); }
+  .achievement-icon { font-size: 1.4rem; margin-bottom: 12px; }
+  .achievement-name { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; margin-bottom: 6px; letter-spacing: -0.01em; }
+  .achievement-org { font-size: 0.8rem; color: var(--muted2); margin-bottom: 8px; font-weight: 300; }
+  .achievement-date { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
+  .achievement-type {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.65rem;
+    padding: 3px 10px; border-radius: 4px; background: rgba(0,229,255,0.1);
+    color: var(--cyan); border: 1px solid rgba(0,229,255,0.2);
+  }
+
   /* GITHUB */
   .github-section {
     background: var(--bg2);
@@ -506,13 +671,15 @@
     font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; margin-bottom: 4px;
   }
   .github-handle { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); }
+  .github-location { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); margin-top: 2px; }
 
-  .github-stats { display: flex; gap: 32px; }
+  .github-stats { display: flex; gap: 32px; flex-wrap: wrap; }
   .gh-stat-val {
     font-family: var(--font-display); font-weight: 800; font-size: 1.5rem;
     color: var(--yellow); display: block; letter-spacing: -0.02em;
   }
   .gh-stat-label { font-size: 0.75rem; color: var(--muted); font-family: var(--font-mono); }
+  .github-note { font-size: 0.72rem; color: var(--muted); font-family: var(--font-mono); margin: -20px 0 32px; opacity: 0.7; }
 
   .repo-grid {
     display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -559,6 +726,7 @@
     width: 36px; height: 36px; border-radius: 8px;
     background: var(--surface2); border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    flex-shrink: 0;
   }
   .contact-item-text { font-size: 0.875rem; font-family: var(--font-mono); }
 
@@ -577,6 +745,7 @@
   .form-input:focus { border-color: var(--yellow); background: rgba(245,230,66,0.03); box-shadow: 0 0 0 3px rgba(245,230,66,0.08); }
   .form-input::placeholder { color: var(--muted); }
   textarea.form-input { resize: vertical; min-height: 120px; }
+  .form-hint { font-size: 0.72rem; color: var(--muted); font-family: var(--font-mono); margin-top: -6px; }
 
   /* FOOTER */
   footer {
@@ -602,6 +771,12 @@
     opacity: 0; transition: opacity 0.3s;
   }
   .footer-glow:hover::after { opacity: 1; }
+  .footer-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+  .footer-links a {
+    color: var(--muted); text-decoration: none; font-size: 0.75rem;
+    font-family: var(--font-mono); transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--yellow); }
 
   /* ANIMATIONS */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -627,15 +802,19 @@
   .mobile-menu {
     display: none; position: fixed; inset: 0; z-index: 99;
     background: rgba(8,10,15,0.97); backdrop-filter: blur(20px);
-    flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    flex-direction: column; align-items: center; justify-content: center; gap: 22px;
+    overflow-y: auto; padding: 40px 20px;
   }
   .mobile-menu.open { display: flex; }
   .mobile-menu a {
-    font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+    font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
     color: var(--text); text-decoration: none; letter-spacing: -0.02em;
     transition: color 0.2s;
   }
   .mobile-menu a:hover { color: var(--yellow); }
+  .mobile-menu .mobile-resume {
+    margin-top: 12px; font-size: 1rem;
+  }
   .mobile-close {
     position: absolute; top: 24px; right: 24px;
     background: none; border: none; color: var(--muted2); font-size: 1.5rem; cursor: pointer;
@@ -644,54 +823,70 @@
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
-    .nav-links, .nav-cta { display: none; }
+    .nav-links, .nav-actions { display: none; }
     .hamburger { display: flex; }
     section { padding: 70px 24px; }
     .hero { padding: 100px 24px 60px; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .contact-grid { grid-template-columns: 1fr; }
     .float-el { display: none; }
-    footer { padding: 32px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; align-items: flex-start; }
   }
 
   @media (max-width: 600px) {
-    .hero-btns { flex-direction: column; align-items: center; }
-    .github-card { flex-direction: column; }
+    .hero-btns { flex-direction: column; align-items: stretch; }
+    .hero-btns a, .hero-btns button { justify-content: center; }
+    .github-card { flex-direction: column; align-items: flex-start; }
     .github-stats { gap: 24px; }
-    .projects-grid { grid-template-columns: 1fr; }
+    .projects-grid, .projects-grid.featured { grid-template-columns: 1fr; }
     .strengths-grid { grid-template-columns: 1fr 1fr; }
+    .cert-grid, .achievement-grid { grid-template-columns: 1fr; }
     .timeline::before { left: 22px; }
-    .timeline-dot { width: 46px; min-width: 46px; height: 46px; font-size: 0.58rem; }
+    .timeline-dot { width: 46px; min-width: 46px; height: 46px; font-size: 0.55rem; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">A<span>.</span>Singh</a>
+  <a href="#home" class="nav-logo">A<span>.</span>Singh</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#journey">Journey</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#github">GitHub</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="mailto:Ashishsingh100580@gmail.com" class="nav-cta">Say Hello →</a>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <div class="nav-actions">
+    <a href="Ashish_Singh_Resume.pdf" download class="nav-cta-ghost">Download Resume</a>
+    <a href="mailto:ashishsingh100580@gmail.com" class="nav-cta">Say Hello →</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="mobile-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
   <a href="#about" onclick="toggleMenu()">About</a>
   <a href="#projects" onclick="toggleMenu()">Projects</a>
   <a href="#skills" onclick="toggleMenu()">Skills</a>
   <a href="#journey" onclick="toggleMenu()">Journey</a>
+  <a href="#certifications" onclick="toggleMenu()">Certifications</a>
+  <a href="#achievements" onclick="toggleMenu()">Achievements</a>
+  <a href="#github" onclick="toggleMenu()">GitHub</a>
   <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="Ashish_Singh_Resume.pdf" download class="mobile-resume" onclick="toggleMenu()">Download Resume ↓</a>
 </div>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -702,47 +897,58 @@
     <div class="orb orb3"></div>
     <!-- Floating UI hints -->
     <div class="float-el float-el1">
-      <span class="dot" style="background:#00e5ff"></span>ai-mentor.connected
+      <span class="dot" style="background:#00e5ff"></span>thermoguard.ai
     </div>
     <div class="float-el float-el2">
-      <span class="dot" style="background:#f5e642"></span>forge-v2.deployed
+      <span class="dot" style="background:#f5e642"></span>forge.ai
     </div>
     <div class="float-el float-el3">
-      <span class="dot" style="background:#3b82f6"></span>uniconnect.live
+      <span class="dot" style="background:#3b82f6"></span>urbanpulse.guardian
+    </div>
+    <div class="float-el float-el4">
+      <span class="dot" style="background:#8b5cf6"></span>resq-x.live
     </div>
   </div>
 
   <div class="hero-content">
-    <div class="hero-badge">CSE AIML · NIET Greater Noida · 2025</div>
+    <div class="hero-badge">CSE (AI/ML) · NIET Greater Noida · 2025–2029</div>
     <h1 class="hero-name">Ashish Singh</h1>
-    <p class="hero-role">// Full-Stack Developer &amp; AIML Student</p>
-    <h2 class="hero-heading">Building Real-World Platforms Through Code, AI, and System Design.</h2>
-    <p class="hero-desc">Focused on creating scalable student platforms, AI-powered systems, and interactive full-stack applications while exploring modern software engineering and intelligent product design.</p>
+    <p class="hero-role">// Full-Stack Developer &amp; AI/ML Student</p>
+    <h2 class="hero-heading">Building Real-World Products with AI, Code &amp; Systems.</h2>
+    <p class="hero-desc">I build AI-powered and full-stack applications that turn practical problems into usable products — from intelligent urban and disaster-response systems to career platforms and management software.</p>
 
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="Ashish_Singh_Resume.pdf" download class="btn-resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
       <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener" class="btn-ghost">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
         GitHub
       </a>
-      <a href="https://www.linkedin.com/in/ashish-singh-946711367" target="_blank" rel="noopener" class="btn-ghost">
+      <a href="https://www.linkedin.com/in/ashish-singh-946711367/" target="_blank" rel="noopener" class="btn-ghost">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
-      </a>
-      <a href="mailto:Ashishsingh100580@gmail.com" class="btn-ghost">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
       </a>
     </div>
 
     <div class="hero-social">
-      <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener" class="social-pill">
+      <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener" class="social-pill" aria-label="GitHub profile">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
         ashishsingh256259
       </a>
-      <a href="mailto:Ashishsingh100580@gmail.com" class="social-pill">
+      <a href="https://www.youtube.com/@ashish_singh_259" target="_blank" rel="noopener" class="social-pill" aria-label="YouTube channel">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+        YouTube
+      </a>
+      <a href="https://www.instagram.com/ashish_singh_259/" target="_blank" rel="noopener" class="social-pill" aria-label="Instagram profile">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 4.96 4.96.06 1.3.07 1.6.07 4.77s-.01 3.47-.07 4.77c-.15 3.25-1.7 4.8-4.96 4.96-1.3.06-1.6.07-4.9.07-3.2 0-3.6-.01-4.9-.07-3.26-.15-4.8-1.72-4.96-4.96-.06-1.3-.07-1.6-.07-4.77s.01-3.47.07-4.77C2.28 3.97 3.83 2.42 7.1 2.27 8.4 2.21 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.73.07-2.27.1-3.31 1.16-3.42 3.42-.06 1.23-.07 1.6-.07 4.51s.01 3.28.07 4.51c.11 2.26 1.15 3.32 3.42 3.42 1.23.06 1.59.07 4.73.07s3.5-.01 4.73-.07c2.26-.1 3.31-1.15 3.42-3.42.06-1.23.07-1.6.07-4.51s-.01-3.28-.07-4.51c-.11-2.26-1.15-3.32-3.42-3.42-1.23-.06-1.59-.07-4.73-.07zm0 3.06a4.94 4.94 0 110 9.88 4.94 4.94 0 010-9.88zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm5.13-1.98a1.16 1.16 0 110 2.32 1.16 1.16 0 010-2.32z"/></svg>
+        Instagram
+      </a>
+      <a href="mailto:ashishsingh100580@gmail.com" class="social-pill" aria-label="Email me">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Ashishsingh100580
+        Email
       </a>
     </div>
   </div>
@@ -759,27 +965,27 @@
 
     <div class="about-grid">
       <div class="about-text">
-        <p>I'm <strong>Ashish Singh</strong>, a 1st year <em>CSE AIML student at NIET Greater Noida</em> with a genuine obsession for building things that actually work in the real world — not just tutorial clones.</p>
-        <p>I started with the basics and quickly moved toward <strong>full-stack development</strong>, picking up React, Firebase, Node.js, and Tailwind along the way. What keeps me going is the challenge of turning ideas into functional systems that real users can interact with.</p>
-        <p>I'm currently exploring <strong>backend engineering, AI API integrations, and scalable system design</strong> — trying to understand not just how to build features, but how to build them well. Projects like FORGE and UniConnect have taught me more about product thinking than any course could.</p>
-        <p>If I'm not coding, I'm usually researching tools, reading about system architecture, or designing interfaces that I'll eventually build. <em>Still very much learning — and loving every step of it.</em></p>
+        <p>I'm <strong>Ashish Singh</strong>, a 2nd year <em>CSE (AI/ML) student at NIET Greater Noida</em>, and a self-taught full-stack developer focused on building practical software products.</p>
+        <p>I enjoy taking ideas from concept to working interfaces, backend systems, AI integrations, and deployed applications — picking up <strong>React, Node.js, Firebase, Tailwind, and AI APIs</strong> along the way to turn ideas into systems that real users can interact with.</p>
+        <p>I'm currently exploring <strong>AI integrations, backend engineering, system design, and intelligent product development</strong> — trying to understand not just how to build features, but how to build them well. Projects like FORGE, ThermoGuard AI, and RESQ-X have taught me more about product thinking than any course could.</p>
+        <p>If I'm not coding, I'm usually researching tools, reading about system architecture, or entering hackathons to test what I've built against real problems. <em>Still very much learning — and loving every step of it.</em></p>
       </div>
       <div class="about-stats">
         <div class="stat-card">
-          <span class="stat-num">15+</span>
-          <span class="stat-label">Public Repositories</span>
+          <span class="stat-num">8</span>
+          <span class="stat-label">Projects Shipped</span>
         </div>
         <div class="stat-card">
-          <span class="stat-num">4+</span>
-          <span class="stat-label">Real-World Projects</span>
+          <span class="stat-num">4</span>
+          <span class="stat-label">Hackathons Entered</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">29</span>
+          <span class="stat-label">GitHub Repositories</span>
         </div>
         <div class="stat-card">
           <span class="stat-num">Full<br>Stack</span>
-          <span class="stat-label">& AI Learning Journey</span>
-        </div>
-        <div class="stat-card">
-          <span class="stat-num">⚡</span>
-          <span class="stat-label">Scalable Product Building</span>
+          <span class="stat-label">+ AI Learning Journey</span>
         </div>
       </div>
     </div>
@@ -791,139 +997,30 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container fade-up">
-    <div class="section-label">Featured Projects</div>
+    <div class="section-label">Projects</div>
     <h2 class="section-title">Things I've actually built.</h2>
     <p class="section-desc">Real products. Real code. Real learnings from each one.</p>
 
-    <div class="projects-grid">
+    <div class="projects-subhead">
+      <h3>Featured Projects</h3>
+      <div class="line"></div>
+      <span class="tag">05 builds</span>
+    </div>
+    <div class="projects-grid featured" id="featured-projects-grid"></div>
 
-      <!-- FORGE -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">⚡</div>
-          <div class="project-links">
-            <a href="https://forgee-mentor.vercel.app/" target="_blank" rel="noopener" class="project-link" title="Live Demo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/ashishsingh256259/Mentor.git" target="_blank" rel="noopener" class="project-link" title="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="project-name">FORGE</div>
-        <div class="project-subtitle">AI Career Ecosystem</div>
-        <p class="project-desc">An AI-powered career development ecosystem designed to help students identify skill gaps, generate personalized learning roadmaps, optimize resumes, and connect with recruiters through an integrated hiring platform.</p>
-        <div class="project-features">
-          <span class="feature-tag">AI Mentor</span>
-          <span class="feature-tag">ATS Resume Analysis</span>
-          <span class="feature-tag">Skill Gap Analysis</span>
-          <span class="feature-tag">Recruiter Dashboard</span>
-          <span class="feature-tag">Role-Based Auth</span>
-          <span class="feature-tag">Analytics</span>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">React.js</span>
-          <span class="stack-tag">Firebase</span>
-          <span class="stack-tag">Node.js</span>
-          <span class="stack-tag">Tailwind CSS</span>
-          <span class="stack-tag">AI APIs</span>
-        </div>
-      </div>
+    <div class="projects-subhead">
+      <h3>Additional Projects</h3>
+      <div class="line"></div>
+      <span class="tag">03 builds</span>
+    </div>
+    <div class="projects-grid" id="additional-projects-grid"></div>
 
-      <!-- Smart Parking System -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🅿️</div>
-          <div class="project-links">
-            <a href="https://smart-parking-system-fawn.vercel.app/" target="_blank" rel="noopener" class="project-link" title="Live Demo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/ashishsingh256259/Smart-Parking-System.git" target="_blank" rel="noopener" class="project-link" title="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="project-name">Smart Parking System</div>
-        <div class="project-subtitle">AI-Powered Urban Parking Platform</div>
-        <p class="project-desc">A smart parking management platform designed to reduce urban parking chaos through real-time slot monitoring, intelligent vehicle tracking, booking systems, and interactive parking analytics. Built with a modern responsive UI focused on scalability and real-world usability.</p>
-        <div class="project-features">
-          <span class="feature-tag">Real-Time Parking Slots</span>
-          <span class="feature-tag">Vehicle Tracking</span>
-          <span class="feature-tag">Parking Analytics</span>
-          <span class="feature-tag">Responsive Dashboard</span>
-          <span class="feature-tag">Booking System</span>
-          <span class="feature-tag">Modern UI</span>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">React.js</span>
-          <span class="stack-tag">Tailwind CSS</span>
-          <span class="stack-tag">Firebase</span>
-          <span class="stack-tag">Node.js</span>
-          <span class="stack-tag">Vercel</span>
-        </div>
-      </div>
-
-      <!-- UniConnect -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🎓</div>
-          <div class="project-links">
-            <a href="https://ashishsingh256259.github.io/uniconnet/" target="_blank" rel="noopener" class="project-link" title="Live Demo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/ashishsingh256259/uniconnet.git" target="_blank" rel="noopener" class="project-link" title="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="project-name">UniConnect</div>
-        <div class="project-subtitle">Academic Communication Platform</div>
-        <p class="project-desc">A communication-focused platform designed to reduce the gap between students and teachers through real-time notices, anonymous doubt solving, polling systems, and collaborative academic interaction.</p>
-        <div class="project-features">
-          <span class="feature-tag">Anonymous Doubts</span>
-          <span class="feature-tag">Notice Board</span>
-          <span class="feature-tag">Polling System</span>
-          <span class="feature-tag">Messaging UI</span>
-          <span class="feature-tag">Resource Sharing</span>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">React.js</span>
-          <span class="stack-tag">Firebase</span>
-          <span class="stack-tag">Tailwind CSS</span>
-        </div>
-      </div>
-
-      <!-- CouponDS -->
-      <div class="project-card">
-        <div class="project-header">
-          <div class="project-icon">🧩</div>
-          <div class="project-links">
-            <a href="https://ashishsingh256259.github.io/coupon_management" target="_blank" rel="noopener" class="project-link" title="Live Demo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/ashishsingh256259/coupon_management.git" target="_blank" rel="noopener" class="project-link" title="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            </a>
-          </div>
-        </div>
-        <div class="project-name">CouponDS</div>
-        <div class="project-subtitle">DSA-Based Coupon Management System</div>
-        <p class="project-desc">An interactive DSA-focused platform demonstrating practical applications of data structures and algorithms through a real-world coupon and discount management system.</p>
-        <div class="project-features">
-          <span class="feature-tag">Hash Table Lookup</span>
-          <span class="feature-tag">Queue Simulation</span>
-          <span class="feature-tag">Stack Undo System</span>
-          <span class="feature-tag">Linked List Logs</span>
-          <span class="feature-tag">DSA Visualization</span>
-        </div>
-        <div class="project-stack">
-          <span class="stack-tag">React.js</span>
-          <span class="stack-tag">JavaScript</span>
-          <span class="stack-tag">Tailwind CSS</span>
-          <span class="stack-tag">DSA</span>
-        </div>
-      </div>
-
+    <div class="exploring-strip">
+      <span class="exp-label">// Now exploring:</span>
+      <span class="exp-pill">AI/ML Systems</span>
+      <span class="exp-pill">Backend Engineering</span>
+      <span class="exp-pill">System Design</span>
+      <span class="exp-pill">Intelligent Product Development</span>
     </div>
   </div>
 </section>
@@ -942,7 +1039,7 @@
         <div class="skill-cat-title">Frontend</div>
         <div class="skill-cards">
           <div class="skill-card"><span class="skill-icon">⚛️</span> React.js</div>
-          <div class="skill-card"><span class="skill-icon">🟨</span> JavaScript</div>
+          <div class="skill-card"><span class="skill-icon">🟨</span> JavaScript (ES6+)</div>
           <div class="skill-card"><span class="skill-icon">🌐</span> HTML5</div>
           <div class="skill-card"><span class="skill-icon">🎨</span> CSS3</div>
           <div class="skill-card"><span class="skill-icon">💨</span> Tailwind CSS</div>
@@ -954,100 +1051,52 @@
           <div class="skill-card"><span class="skill-icon">🟢</span> Node.js</div>
           <div class="skill-card"><span class="skill-icon">🚀</span> Express.js</div>
           <div class="skill-card"><span class="skill-icon">🔗</span> REST APIs</div>
+          <div class="skill-card"><span class="skill-icon">⚡</span> FastAPI</div>
         </div>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title">Database & Backend Services</div>
+        <div class="skill-cat-title">Database</div>
         <div class="skill-cards">
           <div class="skill-card"><span class="skill-icon">🍃</span> MongoDB</div>
           <div class="skill-card"><span class="skill-icon">🔥</span> Firebase</div>
+          <div class="skill-card"><span class="skill-icon">📄</span> Firestore</div>
+          <div class="skill-card"><span class="skill-icon">⏱️</span> Realtime Database</div>
+          <div class="skill-card"><span class="skill-icon">🐘</span> PostgreSQL</div>
         </div>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title">Tools & Deployment</div>
+        <div class="skill-cat-title">AI / Intelligent Systems</div>
         <div class="skill-cards">
-          <div class="skill-card"><span class="skill-icon">🐙</span> GitHub</div>
-          <div class="skill-card"><span class="skill-icon">▲</span> Vercel</div>
-          <div class="skill-card"><span class="skill-icon">📡</span> Postman</div>
+          <div class="skill-card"><span class="skill-icon">🤖</span> Claude API</div>
+          <div class="skill-card"><span class="skill-icon">✨</span> Gemini API</div>
+          <div class="skill-card"><span class="skill-icon">👁️</span> YOLOv8</div>
         </div>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-title">Concepts & Learning</div>
+        <div class="skill-cat-title">Real-Time / Maps</div>
+        <div class="skill-cards">
+          <div class="skill-card"><span class="skill-icon">🔌</span> Socket.IO</div>
+          <div class="skill-card"><span class="skill-icon">🗺️</span> Leaflet</div>
+          <div class="skill-card"><span class="skill-icon">🧭</span> OpenStreetMap</div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">DevOps / Deployment</div>
+        <div class="skill-cards">
+          <div class="skill-card"><span class="skill-icon">🐙</span> Git &amp; GitHub</div>
+          <div class="skill-card"><span class="skill-icon">▲</span> Vercel</div>
+          <div class="skill-card"><span class="skill-icon">☁️</span> Google Cloud Run</div>
+          <div class="skill-card"><span class="skill-icon">🎨</span> Render</div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <div class="skill-cat-title">Concepts</div>
         <div class="skill-cards">
           <div class="skill-card"><span class="skill-icon">🧠</span> DSA</div>
           <div class="skill-card"><span class="skill-icon">🔐</span> Authentication</div>
           <div class="skill-card"><span class="skill-icon">🔌</span> API Integration</div>
-          <div class="skill-card"><span class="skill-icon">📱</span> Responsive Design</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- JOURNEY -->
-<section id="journey">
-  <div class="container fade-up">
-    <div class="section-label">Learning Journey</div>
-    <h2 class="section-title">Sep 2025 — where it all began.</h2>
-    <p class="section-desc">An honest timeline. Real projects, real milestones, real progress.</p>
-
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot">Sep<br>2025</div>
-        <div class="timeline-content">
-          <div class="timeline-title">Started Learning Modern Web Development</div>
-          <p class="timeline-desc">Dived into the fundamentals — HTML, CSS, and JavaScript from the ground up. Focused on understanding how the web actually works, built first responsive UI projects, and pushed early experiments to GitHub.</p>
-          <span class="timeline-badge">Foundation</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">Oct<br>2025</div>
-        <div class="timeline-content">
-          <div class="timeline-title">React.js & Component-Based Architecture</div>
-          <p class="timeline-desc">Picked up React and shifted to thinking in components. Learned responsive layouts, state management, and frontend architecture patterns. Started building interactive interfaces that felt like real products.</p>
-          <span class="timeline-badge">Skill Building</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">Nov<br>2025</div>
-        <div class="timeline-content">
-          <div class="timeline-title">Firebase, Auth & Real-World Integrations</div>
-          <p class="timeline-desc">Explored Firebase — authentication, Firestore, and real-time data. Integrated third-party APIs for the first time, started building dashboard-style projects, and significantly levelled up UI/UX and modern design sensibility.</p>
-          <span class="timeline-badge">Backend Basics</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">Dec<br>2025</div>
-        <div class="timeline-content">
-          <div class="timeline-title">Built UniConnect — Academic Communication Platform</div>
-          <p class="timeline-desc">Shipped a full student-teacher interaction platform featuring real-time notices, anonymous doubt solving, polling systems, and resource sharing. First experience with multi-role auth, live databases, and a complex responsive dashboard at production scale.</p>
-          <span class="timeline-badge">Project Ship</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">Jan<br>2026</div>
-        <div class="timeline-content">
-          <div class="timeline-title">Built CouponDS — DSA-Based Coupon System</div>
-          <p class="timeline-desc">Applied computer science fundamentals in a real product — hash tables for lookup, queues for redemption flow, stacks for undo history, and linked lists for activity logs. First project that made abstract DSA concepts tangible and useful.</p>
-          <span class="timeline-badge">Project Ship</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">Feb<br>2026</div>
-        <div class="timeline-content">
-          <div class="timeline-title">Developed Smart Parking System</div>
-          <p class="timeline-desc">Built an AI-powered urban parking platform with real-time slot monitoring, vehicle tracking, booking flows, and analytics dashboards. Explored intelligent system concepts including A* pathfinding logic, and focused on scalable project architecture and deployment.</p>
-          <span class="timeline-badge">Project Ship</span>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot">Mar<br>2026</div>
-        <div class="timeline-content">
-          <div class="timeline-title">Building FORGE — AI Career Ecosystem</div>
-          <p class="timeline-desc">Started the most ambitious build yet — FORGE, a full AI career development platform with ATS resume analysis, skill-gap detection, personalized roadmaps, recruiter dashboards, and job-matching. Deep focus on full-stack engineering, AI API integration, and scalable product design.</p>
-          <span class="timeline-badge">In Progress 🔥</span>
+          <div class="skill-card"><span class="skill-icon">📐</span> System Design</div>
+          <div class="skill-card"><span class="skill-icon">📱</span> Responsive UI Design</div>
         </div>
       </div>
     </div>
@@ -1059,7 +1108,7 @@
 <!-- STRENGTHS -->
 <section id="strengths">
   <div class="container fade-up">
-    <div class="section-label">Technical Strengths</div>
+    <div class="section-label">Engineering Focus</div>
     <h2 class="section-title">What I bring to the table.</h2>
     <p class="section-desc">Areas I've genuinely invested time into.</p>
 
@@ -1070,18 +1119,18 @@
         <p class="strength-desc">Building end-to-end features — from interactive React UIs to backend APIs and real-time databases.</p>
       </div>
       <div class="strength-card">
+        <div class="strength-icon">🤖</div>
+        <div class="strength-title">AI Feature Integration</div>
+        <p class="strength-desc">Embedding AI capabilities — mentor chat, resume analysis, risk scoring — into working product flows.</p>
+      </div>
+      <div class="strength-card">
         <div class="strength-icon">🎯</div>
-        <div class="strength-title">Product-Focused Thinking</div>
+        <div class="strength-title">Product-Oriented Development</div>
         <p class="strength-desc">Thinking about why a feature matters before building it. User needs, not just technical solutions.</p>
       </div>
       <div class="strength-card">
-        <div class="strength-icon">🧩</div>
-        <div class="strength-title">DSA Visualization</div>
-        <p class="strength-desc">Translating abstract algorithms and data structures into interactive, understandable visual demos.</p>
-      </div>
-      <div class="strength-card">
         <div class="strength-icon">📊</div>
-        <div class="strength-title">Dashboard UI Design</div>
+        <div class="strength-title">Dashboard &amp; UI Engineering</div>
         <p class="strength-desc">Creating multi-role dashboard interfaces that are clean, functional, and visually organized.</p>
       </div>
       <div class="strength-card">
@@ -1090,21 +1139,115 @@
         <p class="strength-desc">Connecting third-party services — AI APIs, Firebase, REST endpoints — into working product flows.</p>
       </div>
       <div class="strength-card">
-        <div class="strength-icon">🤖</div>
-        <div class="strength-title">AI Feature Integration</div>
-        <p class="strength-desc">Embedding AI capabilities into real products in ways that add genuine value to the user experience.</p>
-      </div>
-      <div class="strength-card">
-        <div class="strength-icon">💡</div>
-        <div class="strength-title">Problem Solving</div>
-        <p class="strength-desc">Breaking down complex requirements into smaller, manageable components and building toward a solution.</p>
+        <div class="strength-icon">🧩</div>
+        <div class="strength-title">DSA &amp; Problem Solving</div>
+        <p class="strength-desc">Translating abstract algorithms and data structures into working systems and interactive demos.</p>
       </div>
       <div class="strength-card">
         <div class="strength-icon">📐</div>
         <div class="strength-title">System Design Learning</div>
         <p class="strength-desc">Actively studying how scalable, maintainable software systems are architected — still learning, always curious.</p>
       </div>
+      <div class="strength-card">
+        <div class="strength-icon">💡</div>
+        <div class="strength-title">Real-World Project Building</div>
+        <p class="strength-desc">Shipping working, deployed products instead of tutorial clones — and iterating on them after launch.</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="container fade-up">
+    <div class="section-label">Learning Journey</div>
+    <h2 class="section-title">2025 — where it all began.</h2>
+    <p class="section-desc">An honest timeline. Real projects, real milestones, real progress.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">Year 1</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Started with Programming Fundamentals</div>
+          <p class="timeline-desc">Began B.Tech CSE (AI/ML) at NIET and dived into HTML, CSS, JavaScript and React from the ground up, while building first responsive UI projects and pushing early experiments to GitHub.</p>
+          <span class="timeline-badge">Foundation</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">Full<br>Stack</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Moved into Full-Stack Development</div>
+          <p class="timeline-desc">Picked up Node.js and Firebase alongside React, and started shipping production-style student projects — UniConnect, CouponDS, and Smart Parking System — with real auth flows and live databases.</p>
+          <span class="timeline-badge">Skill Building</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">Jan–Jun<br>2026</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Certified in DSA &amp; Python (iamneo, an NIIT Venture)</div>
+          <p class="timeline-desc">Completed the Data Structures and Algorithms – I course (27 Jan – 04 May 2026) and the Python Programming course (30 May – 13 Jun 2026), strengthening core programming fundamentals.</p>
+          <span class="timeline-badge">Certification</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">2026</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Building AI-Powered Systems</div>
+          <p class="timeline-desc">Started integrating AI APIs (Claude, Gemini) into full products — FORGE (AI career ecosystem) and the Hotel &amp; Restaurant Management System — deploying to Vercel and Google Cloud Run.</p>
+          <span class="timeline-badge">Project Ship</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">May<br>2026</div>
+        <div class="timeline-content">
+          <div class="timeline-title">InnovateX-NIET 1.0 Hackathon</div>
+          <p class="timeline-desc">Presented FORGE at NIET's 36-hour college-level hackathon as part of Team Forge, and took part in SEGUE 3.0, a national hackathon, with the UrbanPulse Guardian AI smart-city concept.</p>
+          <span class="timeline-badge">Hackathon</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">Aug<br>2026</div>
+        <div class="timeline-content">
+          <div class="timeline-title">RESQ-X &amp; More Hackathons</div>
+          <p class="timeline-desc">Worked on RESQ-X, a disaster-response intelligence platform, at Automate India 2026 — The GenAI &amp; Blockchain Hackathon — and took part in the Adobe University Hackathon 2026.</p>
+          <span class="timeline-badge">Hackathon</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">Now</div>
+        <div class="timeline-content">
+          <div class="timeline-title">2nd Year — Building ThermoGuard AI</div>
+          <p class="timeline-desc">Currently a 2nd year student building ThermoGuard AI, a geospatial fire-risk intelligence platform, while continuing to explore AI/ML systems, backend engineering, and system design.</p>
+          <span class="timeline-badge">In Progress 🔥</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="container fade-up">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Courses completed.</h2>
+    <p class="section-desc">Verified certificates from completed courses.</p>
+    <div class="cert-grid" id="cert-grid"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ACHIEVEMENTS / HACKATHONS -->
+<section id="achievements">
+  <div class="container fade-up">
+    <div class="section-label">Hackathons &amp; Achievements</div>
+    <h2 class="section-title">Building under pressure.</h2>
+    <p class="section-desc">Hackathon participation and activities — kept separate from course certifications.</p>
+    <div class="achievement-grid" id="achievement-grid"></div>
   </div>
 </section>
 
@@ -1123,51 +1266,15 @@
         <div>
           <div class="github-name">Ashish Singh</div>
           <div class="github-handle">@ashishsingh256259</div>
+          <div class="github-location">📍 Greater Noida</div>
         </div>
       </div>
-      <div class="github-stats">
-        <div>
-          <span class="gh-stat-val">15+</span>
-          <span class="gh-stat-label">Public Repos</span>
-        </div>
-        <div>
-          <span class="gh-stat-val">2025</span>
-          <span class="gh-stat-label">Joined</span>
-        </div>
-        <div>
-          <span class="gh-stat-val">Active</span>
-          <span class="gh-stat-label">Status</span>
-        </div>
-      </div>
+      <div class="github-stats" id="github-stats"></div>
       <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener" class="btn-primary">View Profile →</a>
     </div>
+    <p class="github-note">Snapshot of current GitHub profile activity — updated periodically.</p>
 
-    <div class="repo-grid">
-      <a href="https://github.com/ashishsingh256259/Mentor.git" target="_blank" rel="noopener" class="repo-card">
-        <div class="repo-name">📁 Mentor (FORGE)</div>
-        <p class="repo-desc">AI-powered career ecosystem with mentor integration, ATS resume analysis, and recruiter dashboards.</p>
-        <div class="repo-meta">
-          <span><span class="repo-dot" style="background:#f5e642"></span>JavaScript</span>
-          <span>React · Firebase</span>
-        </div>
-      </a>
-      <a href="https://github.com/ashishsingh256259/uniconnet.git" target="_blank" rel="noopener" class="repo-card">
-        <div class="repo-name">📁 uniconnet</div>
-        <p class="repo-desc">Academic communication platform connecting students and teachers through real-time features.</p>
-        <div class="repo-meta">
-          <span><span class="repo-dot" style="background:#00e5ff"></span>JavaScript</span>
-          <span>React · Firebase</span>
-        </div>
-      </a>
-      <a href="https://github.com/ashishsingh256259/coupon_management.git" target="_blank" rel="noopener" class="repo-card">
-        <div class="repo-name">📁 coupon_management</div>
-        <p class="repo-desc">Interactive DSA visualization through a real coupon management system with hash tables, stacks, queues.</p>
-        <div class="repo-meta">
-          <span><span class="repo-dot" style="background:#8b5cf6"></span>JavaScript</span>
-          <span>React · DSA</span>
-        </div>
-      </a>
-    </div>
+    <div class="repo-grid" id="repo-grid"></div>
   </div>
 </section>
 
@@ -1177,7 +1284,7 @@
 <section id="contact">
   <div class="container fade-up">
     <div class="section-label">Contact</div>
-    <h2 class="section-title">Let's connect.</h2>
+    <h2 class="section-title">Have an idea worth building?</h2>
     <p class="section-desc">Open to collaborations, feedback on projects, and interesting conversations about tech.</p>
 
     <div class="contact-grid">
@@ -1186,9 +1293,9 @@
         <p>Whether you want to collaborate on a project, give feedback on something I've built, or just talk about code — I'm always up for it.</p>
 
         <div class="contact-items">
-          <a href="mailto:Ashishsingh100580@gmail.com" class="contact-item">
+          <a href="mailto:ashishsingh100580@gmail.com" class="contact-item">
             <div class="contact-item-icon">✉️</div>
-            <span class="contact-item-text">Ashishsingh100580@gmail.com</span>
+            <span class="contact-item-text">ashishsingh100580@gmail.com</span>
           </a>
           <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener" class="contact-item">
             <div class="contact-item-icon">
@@ -1196,49 +1303,278 @@
             </div>
             <span class="contact-item-text">github.com/ashishsingh256259</span>
           </a>
-          <a href="https://www.linkedin.com/in/ashish-singh-946711367" target="_blank" rel="noopener" class="contact-item">
+          <a href="https://www.linkedin.com/in/ashish-singh-946711367/" target="_blank" rel="noopener" class="contact-item">
             <div class="contact-item-icon">
               <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </div>
             <span class="contact-item-text">linkedin.com/in/ashish-singh-946711367</span>
           </a>
+          <a href="https://www.youtube.com/@ashish_singh_259" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31.5 31.5 0 000 12a31.5 31.5 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31.5 31.5 0 0024 12a31.5 31.5 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg>
+            </div>
+            <span class="contact-item-text">youtube.com/@ashish_singh_259</span>
+          </a>
+          <a href="https://www.instagram.com/ashish_singh_259/" target="_blank" rel="noopener" class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 4.96 4.96.06 1.3.07 1.6.07 4.77s-.01 3.47-.07 4.77c-.15 3.25-1.7 4.8-4.96 4.96-1.3.06-1.6.07-4.9.07-3.2 0-3.6-.01-4.9-.07-3.26-.15-4.8-1.72-4.96-4.96-.06-1.3-.07-1.6-.07-4.77s.01-3.47.07-4.77C2.28 3.97 3.83 2.42 7.1 2.27 8.4 2.21 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5.01-4.73.07-2.27.1-3.31 1.16-3.42 3.42-.06 1.23-.07 1.6-.07 4.51s.01 3.28.07 4.51c.11 2.26 1.15 3.32 3.42 3.42 1.23.06 1.59.07 4.73.07s3.5-.01 4.73-.07c2.26-.1 3.31-1.15 3.42-3.42.06-1.23.07-1.6.07-4.51s-.01-3.28-.07-4.51c-.11-2.26-1.15-3.32-3.42-3.42-1.23-.06-1.59-.07-4.73-.07zm0 3.06a4.94 4.94 0 110 9.88 4.94 4.94 0 010-9.88zm0 1.8a3.14 3.14 0 100 6.28 3.14 3.14 0 000-6.28zm5.13-1.98a1.16 1.16 0 110 2.32 1.16 1.16 0 010-2.32z"/></svg>
+            </div>
+            <span class="contact-item-text">instagram.com/ashish_singh_259</span>
+          </a>
         </div>
       </div>
 
-      <div class="contact-form">
+      <form class="contact-form" id="contactForm">
         <div class="form-group">
-          <label class="form-label">NAME</label>
-          <input type="text" class="form-input" placeholder="Your name" />
+          <label class="form-label" for="cf-name">NAME</label>
+          <input type="text" id="cf-name" class="form-input" placeholder="Your name" required />
         </div>
         <div class="form-group">
-          <label class="form-label">EMAIL</label>
-          <input type="email" class="form-input" placeholder="your@email.com" />
+          <label class="form-label" for="cf-email">EMAIL</label>
+          <input type="email" id="cf-email" class="form-input" placeholder="your@email.com" required />
         </div>
         <div class="form-group">
-          <label class="form-label">MESSAGE</label>
-          <textarea class="form-input" placeholder="What's on your mind?"></textarea>
+          <label class="form-label" for="cf-message">MESSAGE</label>
+          <textarea id="cf-message" class="form-input" placeholder="What's on your mind?" required></textarea>
         </div>
-        <button class="btn-primary" onclick="handleContact()" style="width:100%;padding:14px;">Send Message →</button>
-      </div>
+        <button type="submit" class="btn-primary" style="width:100%;padding:14px;justify-content:center;">Open in Email App →</button>
+        <p class="form-hint">This opens your email app with the message pre-filled — nothing is sent from this page.</p>
+      </form>
     </div>
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
-  <div class="footer-brand footer-glow">Built by <span>Ashish Singh</span></div>
-  <div class="footer-copy">CSE AIML · NIET Greater Noida · 2025</div>
-  <div style="display:flex;gap:16px;align-items:center;">
-    <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-size:0.75rem;font-family:var(--font-mono);transition:color 0.2s;" onmouseover="this.style.color='var(--yellow)'" onmouseout="this.style.color='var(--muted)'">GitHub</a>
-    <a href="https://www.linkedin.com/in/ashish-singh-946711367" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;font-size:0.75rem;font-family:var(--font-mono);transition:color 0.2s;" onmouseover="this.style.color='var(--cyan)'" onmouseout="this.style.color='var(--muted)'">LinkedIn</a>
-    <a href="mailto:Ashishsingh100580@gmail.com" style="color:var(--muted);text-decoration:none;font-size:0.75rem;font-family:var(--font-mono);transition:color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Email</a>
+  <div>
+    <div class="footer-brand footer-glow">Built by <span>Ashish Singh</span></div>
+    <div class="footer-copy">CSE (AI/ML) · NIET Greater Noida · 2025–2029 · 2nd Year</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://github.com/ashishsingh256259" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/ashish-singh-946711367/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://www.youtube.com/@ashish_singh_259" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://www.instagram.com/ashish_singh_259/" target="_blank" rel="noopener">Instagram</a>
+    <a href="mailto:ashishsingh100580@gmail.com">Email</a>
   </div>
 </footer>
 
 <script>
+  /* ============================================================
+     DATA — edit these arrays to update projects, GitHub & certs
+     ============================================================ */
+
+  const ICON_LIVE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+  const ICON_GITHUB = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>';
+
+  const featuredProjects = [
+    {
+      number: '01', icon: '🔥',
+      name: 'ThermoGuard AI',
+      subtitle: 'Geospatial Fire-Risk Intelligence Platform',
+      category: 'AI · Geospatial · Environmental Safety',
+      description: 'An AI-powered geospatial intelligence platform focused on fire-risk analysis — combining mapping and environmental data into an interactive tool for visualizing and assessing wildfire-risk conditions.',
+      features: ['Geospatial Mapping', 'AI Risk Analysis', 'Environmental Data', 'Interactive Map UI'],
+      stack: ['React.js', 'AI APIs', 'GIS / Mapping', 'Tailwind CSS'],
+      live: 'https://thermoguard-ai.ai.studio',
+      github: 'https://github.com/ashi256259/ThermoGuard.git'
+    },
+    {
+      number: '02', icon: '🏙️',
+      name: 'UrbanPulse Guardian AI',
+      subtitle: 'Smart City & Urban Safety Platform',
+      category: 'AI · Smart City · Urban Safety',
+      description: 'An AI-powered smart-city platform exploring urban safety and city management concepts, built and presented at the SEGUE 3.0 national hackathon.',
+      features: ['Smart City Concept', 'Urban Safety Monitoring', 'AI-Assisted Insights', 'Dashboard UI'],
+      stack: ['React.js', 'AI APIs', 'Firebase', 'Tailwind CSS'],
+      live: 'https://urbanpulse-guardian-ai.ai.studio',
+      github: 'https://github.com/ashishsingh256259/URBAN.git'
+    },
+    {
+      number: '03', icon: '⚡',
+      name: 'FORGE',
+      subtitle: 'AI Career Ecosystem',
+      category: 'AI · Career Platform · Full-Stack',
+      description: 'An AI-powered career development ecosystem built to help students identify skill gaps, generate personalized learning roadmaps, optimize resumes, and connect with recruiters through an integrated hiring platform.',
+      features: ['AI Mentor Chatbot', 'ATS Resume Analysis', 'Skill-Gap Detection', 'Recruiter Dashboard', 'Role-Based Auth', 'Analytics'],
+      stack: ['React.js', 'Node.js', 'Firebase', 'Claude API', 'Tailwind CSS'],
+      live: 'https://forgee-mentor.vercel.app/',
+      github: 'https://github.com/ashishsingh256259/Mentor.git',
+      note: 'GitHub repository is named "Mentor" — the shipped product is FORGE.'
+    },
+    {
+      number: '04', icon: '🏨',
+      name: 'Hotel & Restaurant Management System',
+      subtitle: 'AI-Powered Management Platform',
+      category: 'AI · Full-Stack · Hospitality Tech',
+      description: 'A full hotel and restaurant management system with AI integration via Google AI Studio, deployed on Google Cloud Run with production-grade infrastructure. Covers table management, menu, billing, and reservation flows through a responsive interface.',
+      features: ['Table Management', 'Menu Management', 'Billing System', 'Reservation Flow', 'AI Integration'],
+      stack: ['React.js', 'Gemini API', 'Google Cloud Run', 'Firebase'],
+      live: 'https://hotel-restaurant.ai.studio/',
+      github: 'https://github.com/ashishsingh256259/Hotel-and-Management-System.git'
+    },
+    {
+      number: '05', icon: '🚨',
+      name: 'RESQ-X',
+      subtitle: 'Disaster-Response Intelligence Platform',
+      category: 'AI · Disaster Response · GenAI Hackathon',
+      description: 'A disaster-response intelligence platform built at Automate India 2026 — The GenAI & Blockchain Hackathon — focused on connecting citizen reports, incident data, and response coordination in one system.',
+      features: ['Incident Reporting', 'Citizen-to-Response Flow', 'Live Mapping', 'Hackathon Build'],
+      stack: ['React.js', 'AI APIs', 'Maps / GIS', 'Node.js'],
+      live: 'https://resq-x-sage.vercel.app/',
+      github: 'https://github.com/itxabhishek209-hash/RESQ-X.git',
+      note: 'Built with a hackathon team — GitHub repository hosted under a teammate\u2019s account.'
+    }
+  ];
+
+  const additionalProjects = [
+    {
+      icon: '🅿️',
+      name: 'Smart Parking System',
+      subtitle: 'AI-Powered Urban Parking Platform',
+      description: 'A smart parking management platform with real-time slot monitoring, vehicle tracking, booking flows, and analytics dashboards, using A* pathfinding logic for intelligent slot allocation.',
+      features: ['Real-Time Parking Slots', 'Vehicle Tracking', 'Parking Analytics', 'Booking System'],
+      stack: ['React.js', 'Tailwind CSS', 'Firebase', 'Node.js'],
+      live: 'https://smart-parking-system-fawn.vercel.app/',
+      github: 'https://github.com/ashishsingh256259/Smart-Parking-System.git'
+    },
+    {
+      icon: '🎓',
+      name: 'UniConnect',
+      subtitle: 'Academic Communication Platform',
+      description: 'A student-teacher collaboration platform with real-time notices, anonymous doubt solving, polling, and resource sharing across multiple user roles.',
+      features: ['Anonymous Doubts', 'Notice Board', 'Polling System', 'Multi-Role Auth'],
+      stack: ['React.js', 'Firebase', 'Tailwind CSS'],
+      live: 'https://ashishsingh256259.github.io/uniconnet/',
+      github: 'https://github.com/ashishsingh256259/uniconnet.git'
+    },
+    {
+      icon: '🧩',
+      name: 'CouponDS',
+      subtitle: 'DSA-Based Coupon Management System',
+      description: 'A hands-on DSA project applying hash tables, stacks, and queues to a working coupon and discount management system — turning abstract data structures into something tangible.',
+      features: ['Hash Table Lookup', 'Stack Undo Flow', 'Queue Simulation', 'DSA Visualization'],
+      stack: ['React.js', 'JavaScript', 'Tailwind CSS'],
+      live: 'https://ashishsingh256259.github.io/coupon_management/',
+      github: 'https://github.com/ashishsingh256259/coupon_management.git'
+    }
+  ];
+
+  const githubData = {
+    stats: [
+      { val: '29', label: 'Repositories' },
+      { val: '4', label: 'Stars' },
+      { val: '166', label: 'Contributions (last yr)' }
+    ],
+    repos: [
+      { name: 'ThermoGuard', desc: 'Geospatial AI fire-risk intelligence platform.', lang: 'JavaScript', tags: 'React · AI APIs', color: '#f5e642', url: 'https://github.com/ashi256259/ThermoGuard.git' },
+      { name: 'URBAN', desc: 'UrbanPulse Guardian AI — smart-city safety concept.', lang: 'JavaScript', tags: 'React · Firebase', color: '#00e5ff', url: 'https://github.com/ashishsingh256259/URBAN.git' },
+      { name: 'Mentor (FORGE)', desc: 'AI-powered career ecosystem with mentor integration, ATS resume analysis, and recruiter dashboards.', lang: 'JavaScript', tags: 'React · Firebase', color: '#3b82f6', url: 'https://github.com/ashishsingh256259/Mentor.git' },
+      { name: 'Hotel-and-Management-System', desc: 'AI-powered hotel and restaurant management platform.', lang: 'JavaScript', tags: 'React · Gemini API', color: '#8b5cf6', url: 'https://github.com/ashishsingh256259/Hotel-and-Management-System.git' },
+      { name: 'Smart-Parking-System', desc: 'Real-time parking monitoring, booking and analytics platform.', lang: 'JavaScript', tags: 'React · Firebase', color: '#f5e642', url: 'https://github.com/ashishsingh256259/Smart-Parking-System.git' },
+      { name: 'uniconnet', desc: 'Academic communication platform connecting students and teachers through real-time features.', lang: 'JavaScript', tags: 'React · Firebase', color: '#00e5ff', url: 'https://github.com/ashishsingh256259/uniconnet.git' },
+      { name: 'coupon_management', desc: 'Interactive DSA visualization through a real coupon management system with hash tables, stacks, queues.', lang: 'JavaScript', tags: 'React · DSA', color: '#8b5cf6', url: 'https://github.com/ashishsingh256259/coupon_management.git' }
+    ]
+  };
+
+  const certifications = [
+    { icon: '🧠', title: 'Data Structures and Algorithms – I', issuer: 'iamneo (An NIIT Venture)', duration: '27 Jan 2026 – 04 May 2026', type: 'Certificate of Appreciation' },
+    { icon: '🐍', title: 'Python Programming', issuer: 'iamneo (An NIIT Venture)', duration: '30 May 2026 – 13 Jun 2026', type: 'Certificate of Appreciation' },
+    { icon: '📘', title: 'Infosys Springboard', issuer: 'Infosys', duration: 'Programming & software development fundamentals', type: 'Course Completion' },
+    { icon: '🌐', title: 'Cisco Networking Academy', issuer: 'Cisco', duration: 'Networking & IT essentials', type: 'Course Completion' }
+  ];
+
+  const achievements = [
+    { icon: '🏆', name: 'InnovateX-NIET 1.0 Hackathon', org: 'NIET, Greater Noida · Team: Forge · 36-hour hackathon', date: '3–4 May 2026', type: 'Certificate of Participation' },
+    { icon: '🤖', name: 'Automate India 2026 — GenAI & Blockchain Hackathon', org: 'Coders Era · NIET Chapter (Pre-Online Event) · worked on RESQ-X', date: '2026', type: 'Certificate of Appreciation' },
+    { icon: '🎨', name: 'Adobe University Hackathon 2026', org: 'Organized by Adobe, via Unstop', date: '9 August 2026', type: 'Certificate of Participation' },
+    { icon: '🏙️', name: 'SEGUE 3.0 National Hackathon', org: 'UrbanPulse Guardian AI', date: '2026', type: 'Participation' }
+  ];
+
+  /* ============================================================
+     RENDER FUNCTIONS
+     ============================================================ */
+
+  function renderProjectCard(p, featured) {
+    const numberHtml = featured ? `<span class="project-number">${p.number}</span>` : '';
+    const featuresHtml = p.features.map(f => `<span class="feature-tag">${f}</span>`).join('');
+    const stackHtml = p.stack.map(s => `<span class="stack-tag">${s}</span>`).join('');
+    const noteHtml = p.note ? `<p class="project-note">${p.note}</p>` : '';
+    return `
+      <div class="project-card${featured ? ' featured' : ''}">
+        <div class="project-header">
+          <div class="project-header-left">
+            ${numberHtml}
+            <div class="project-icon">${p.icon}</div>
+          </div>
+          <div class="project-links">
+            <a href="${p.live}" target="_blank" rel="noopener" class="project-link" title="Live Demo" aria-label="${p.name} live demo">${ICON_LIVE}</a>
+            <a href="${p.github}" target="_blank" rel="noopener" class="project-link" title="GitHub" aria-label="${p.name} GitHub repository">${ICON_GITHUB}</a>
+          </div>
+        </div>
+        <div class="project-name">${p.name}</div>
+        <div class="project-subtitle">${p.subtitle}</div>
+        ${p.category ? `<div class="project-category">${p.category}</div>` : ''}
+        <p class="project-desc">${p.description}</p>
+        ${noteHtml}
+        <div class="project-features">${featuresHtml}</div>
+        <div class="project-stack">${stackHtml}</div>
+        <div class="project-actions">
+          <a href="${p.live}" target="_blank" rel="noopener" class="project-btn live">Live Demo →</a>
+          <a href="${p.github}" target="_blank" rel="noopener" class="project-btn code">GitHub →</a>
+        </div>
+      </div>`;
+  }
+
+  document.getElementById('featured-projects-grid').innerHTML =
+    featuredProjects.map(p => renderProjectCard(p, true)).join('');
+  document.getElementById('additional-projects-grid').innerHTML =
+    additionalProjects.map(p => renderProjectCard(p, false)).join('');
+
+  document.getElementById('github-stats').innerHTML = githubData.stats.map(s =>
+    `<div><span class="gh-stat-val">${s.val}</span><span class="gh-stat-label">${s.label}</span></div>`
+  ).join('');
+
+  document.getElementById('repo-grid').innerHTML = githubData.repos.map(r => `
+    <a href="${r.url}" target="_blank" rel="noopener" class="repo-card">
+      <div class="repo-name">📁 ${r.name}</div>
+      <p class="repo-desc">${r.desc}</p>
+      <div class="repo-meta">
+        <span><span class="repo-dot" style="background:${r.color}"></span>${r.lang}</span>
+        <span>${r.tags}</span>
+      </div>
+    </a>`).join('');
+
+  document.getElementById('cert-grid').innerHTML = certifications.map(c => `
+    <div class="cert-card">
+      <div class="cert-icon">${c.icon}</div>
+      <div class="cert-title">${c.title}</div>
+      <div class="cert-issuer">${c.issuer}</div>
+      <div class="cert-duration">${c.duration}</div>
+      <span class="cert-type">${c.type}</span>
+    </div>`).join('');
+
+  document.getElementById('achievement-grid').innerHTML = achievements.map(a => `
+    <div class="achievement-card">
+      <div class="achievement-icon">${a.icon}</div>
+      <div class="achievement-name">${a.name}</div>
+      <div class="achievement-org">${a.org}</div>
+      <div class="achievement-date">${a.date}</div>
+      <span class="achievement-type">${a.type}</span>
+    </div>`).join('');
+
+  /* ============================================================
+     UI BEHAVIOUR
+     ============================================================ */
+
   // Mobile menu
   function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.hamburger');
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
   // Scroll reveal
@@ -1252,17 +1588,16 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // Contact form
-  function handleContact() {
-    const btn = event.target;
-    const original = btn.textContent;
-    btn.textContent = '✓ Message sent!';
-    btn.style.background = '#22c55e';
-    setTimeout(() => {
-      btn.textContent = original;
-      btn.style.background = '';
-    }, 2500);
-  }
+  // Contact form — opens the user's email client with a pre-filled message (mailto), no backend
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+    window.location.href = `mailto:ashishsingh100580@gmail.com?subject=${subject}&body=${body}`;
+  });
 
   // Stagger timeline items
   document.querySelectorAll('.timeline-item').forEach((el, i) => {
